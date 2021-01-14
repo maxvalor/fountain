@@ -1,17 +1,19 @@
-#ifndef MSG_H_
-#define MSG_H_
-
-#include <memory>
+#ifndef SERVICE_H_
+#define SERVICE_H_
 
 namespace mini_ros {
-  struct Message {
+
+  struct Service {
     struct Header {
-      std::uint32_t id;
+      pid_t pid;
+      std::thread::id tid;
       std::uint32_t timestamp;
       size_t data_len;
     } header;
 
     std::uint8_t __data[0];
   };
-}
+} /* mini_ros */
+
+
 #endif

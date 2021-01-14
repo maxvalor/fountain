@@ -6,6 +6,7 @@
 #include <thread>
 #include <functional>
 #include "message_queue.h"
+#include "service.h"
 #include <mosquitto.h>
 #include <mqtt_protocol.h>
 
@@ -17,11 +18,18 @@ private:
     std::function<void(MessagePair)>> emplaces;
 
   std::map<std::string, std::list<std::thread::id>> subscribers;
+  std::map<std::string, std::function<bool(std::shared_ptr<Service>)>> services;
 
   static Core *singleton;
   std::mutex emplaces_mtx;
   std::mutex subscribers_mtx;
+  std::mutex services_mtx;
   struct mosquitto *mosq;
+  struct mosquitto *mosq_req;
+  struct mosquitto *mosq_resp;
+
+  ServiceQueue srv_resp_queue;
+  std::mutex srv_resp_mtx;
 
   Core();
 public:
@@ -35,6 +43,13 @@ public:
   void subscribe(std::thread::id tid, std::string topic);
 
   void deliver(MessagePair msg, bool mosquitto = false);
+  void deliver(ServicePair msg);
+
+  void register_service(std::string srv_name,
+    std::function<bool(std::shared_ptr<Service>)> f);
+
+  bool call_service(std::string srv_name, std::shared_ptr<Service> srv, bool remote = false);
+  bool wait_for_response(std::string srv_resp, std::shared_ptr<Service> srv);
 };
 
 } /* mini_ros */

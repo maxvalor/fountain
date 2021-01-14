@@ -1,5 +1,6 @@
 #include "thread_handle.h"
 #include <iostream>
+#include <unistd.h>
 
 namespace mini_ros {
 
@@ -149,4 +150,75 @@ namespace mini_ros {
 
       return Publisher(publish_f);
   }
+
+  ServiceServer ThreadHandle::_advertiseService(std::string& srv_name,
+    std::function<bool(std::shared_ptr<Service>)> f, bool sync)
+  {
+
+    if (sync)
+    {
+      std::shared_ptr<std::mutex> pmtx = std::make_shared<std::mutex>();
+      auto sync_f = [f, pmtx](std::shared_ptr<Service> srv)
+      {
+        bool rlt;
+        pmtx->lock();
+        rlt = f(srv);
+        pmtx->unlock();
+        return rlt;
+      };
+
+      f = sync_f;
+    }
+
+    Core::instance().register_service(srv_name, f);
+
+    auto shutdown_f = [srv_name]
+    {
+      // std::cout << "succeed in down." << std::endl;
+      auto return_false = [](std::shared_ptr<Service> srv)
+      {
+        return false;
+      };
+      Core::instance().register_service(srv_name, return_false);
+    };
+
+    return ServiceServer(shutdown_f);
+  }
+
+  ServiceClient ThreadHandle::_serviceClient(std::string& srv_name,
+    std::uint32_t timeout_ms, const char* tname)
+  {
+    auto call = [srv_name, timeout_ms, tname](std::shared_ptr<Service> srv, const char* msg_tname)
+    {
+      assert(tname == msg_tname);
+      if (timeout_ms > 0)
+      {
+        std::future<bool> result = std::async([srv_name, srv](){
+          srv->header.pid = getpid();
+          srv->header.tid = std::this_thread::get_id();
+          return Core::instance().call_service(srv_name, srv);
+        });
+        try
+        {
+          std::chrono::system_clock::time_point two_seconds_passed
+              = std::chrono::system_clock::now() + std::chrono::milliseconds(timeout_ms);
+          result.wait_until(two_seconds_passed);
+          return result.get();
+        }
+        catch (...)
+        {
+            // std::cout << "get error....\n ";
+        }
+      }
+      else
+      {
+        return Core::instance().call_service(srv_name, srv);
+      }
+
+      return false;
+    };
+
+    return ServiceClient(call);
+  }
+
 } /* mini_ros */
