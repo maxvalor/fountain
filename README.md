@@ -5,4 +5,4 @@ The SRPS(Small Robot Publish/Subscribe Architecture) is a publish/subscribe arch
 # Update
 
 1. Support for Service/Call mechanism. (Finished.)
-2. Rename and optimized. (To Do)
+2. Rename and optimize. (To Do)
