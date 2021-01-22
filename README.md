@@ -1,6 +1,6 @@
 # Introduce
 
-The Fountain is a publish/subscribe architecture for small robot development. It is based on the mosquitto. Then you try publishing a message by a topic, the architecture will determine send it by multi-thread mechanism or the multi-process mechanism automatically.
+The Fountain is a publish/subscribe architecture for small robot development. It is based on the mosquitto. When you try publishing a message by a topic, the architecture will determine send it by multi-thread mechanism or the multi-process mechanism automatically.
 
 # Update
 
