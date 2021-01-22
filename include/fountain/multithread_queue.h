@@ -6,7 +6,7 @@
 #include <mutex>
 #include <memory>
 
-namespace mini_ros {
+namespace ftn {
 
 template <typename T>
 class MultiThreadQueue {

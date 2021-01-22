@@ -4,7 +4,7 @@
 #include <functional>
 #include "message.h"
 
-namespace mini_ros {
+namespace ftn {
 
 class Publisher {
   using pub_func = std::function<void(std::shared_ptr<Message>, const char*)>;
@@ -33,6 +33,6 @@ public:
   }
 };
 
-} /* mini_ros */
+} /* ftn */
 
 #endif

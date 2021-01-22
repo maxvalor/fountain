@@ -1,5 +1,5 @@
 #include "main_thread.h"
 
-namespace mini_ros {
+namespace ftn {
     MainThreadProcessor* MainThreadProcessor::singleton = nullptr;
 }

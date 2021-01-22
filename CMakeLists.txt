@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(mini_ros VERSION 1.0)
+project(fountain VERSION 1.0)
 
 add_definitions(-std=c++11)
 
 include_directories(
-  include/mini_ros
+  include/fountain
 )
 
-add_library(miniros SHARED
+add_library(fountain SHARED
   src/core.cpp
   src/main_thread.cpp
   src/module.cpp
@@ -16,14 +16,14 @@ add_library(miniros SHARED
   src/convenient.cpp
 )
 
-target_link_libraries(miniros
+target_link_libraries(fountain
   pthread
   mosquitto
 )
 
 include(cmake/sample.cmake)
 
-install(TARGETS miniros
+install(TARGETS fountain
   LIBRARY DESTINATION lib
 )
 

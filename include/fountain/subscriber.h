@@ -3,7 +3,7 @@
 
 #include <functional>
 
-namespace mini_ros {
+namespace ftn {
 
 class Subscriber {
   std::function<void(void)> f;
@@ -19,6 +19,6 @@ public:
   }
 };
 
-} /* mini_ros */
+} /* ftn */
 
 #endif

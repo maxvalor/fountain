@@ -2,7 +2,7 @@
 #include <iostream>
 #include <unistd.h>
 
-namespace mini_ros {
+namespace ftn {
 
   ThreadHandle::ThreadHandle()
   {
@@ -221,4 +221,4 @@ namespace mini_ros {
     return ServiceClient(call);
   }
 
-} /* mini_ros */
+} /* ftn */

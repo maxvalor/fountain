@@ -1,11 +1,11 @@
 #ifndef SERVER_MODULE_H_
 #define SERVER_MODULE_H_
 
-#include <mini_ros/module.h>
+#include <fountain/module.h>
 #include <iostream>
 #include "sample_srv.h"
 
-class ServerModule : public mini_ros::Module {
+class ServerModule : public ftn::Module {
 private:
   /* data */
 
@@ -23,7 +23,7 @@ public:
 
   void onInit() override
   {
-    mini_ros::ServiceServer server =
+    ftn::ServiceServer server =
       getModuleHandle().advertiseService<SampleSrv>("sample_service",
         std::bind(&ServerModule::onCalled, this, std::placeholders::_1));
   }

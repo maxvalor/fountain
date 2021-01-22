@@ -3,7 +3,7 @@
 
 #include <memory>
 
-namespace mini_ros {
+namespace ftn {
   struct Message {
     struct Header {
       std::uint32_t id;

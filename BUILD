@@ -5,12 +5,12 @@ package(
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 
 cc_library(
-  name = "libmini_ros",
+  name = "libfountain/",
   includes = [
-    "include/mini_ros",
+    "include/fountain/",
   ],
   srcs = glob([
-    "include/mini_ros/*.h",
+    "include/fountain//*.h",
     "src/*.cpp",
   ]),
   linkopts = ["-lpthread"],
@@ -27,7 +27,7 @@ cc_binary(
     "sample/pub_sub/*.cpp",
     "sample/pub_sub/*.h",
   ]),
-  deps = [":libmini_ros"],
+  deps = [":libfountain/"],
   copts = ["-std=c++11"],
 )
 
@@ -40,6 +40,6 @@ cc_binary(
     "sample/srv_call/*.cpp",
     "sample/srv_call/*.h",
   ]),
-  deps = [":libmini_ros"],
+  deps = [":libfountain/"],
   copts = ["-std=c++11"],
 )

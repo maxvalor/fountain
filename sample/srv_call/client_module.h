@@ -1,11 +1,11 @@
 #ifndef CLIENT_MODULE_H_
 #define CLIENT_MODULE_H_
 
-#include <mini_ros/module.h>
+#include <fountain/module.h>
 #include <iostream>
 #include "sample_srv.h"
 
-class ClientModule : public mini_ros::Module {
+class ClientModule : public ftn::Module {
 private:
   /* data */
 
@@ -15,7 +15,7 @@ public:
 
   void onInit() override
   {
-    mini_ros::ServiceClient client =
+    ftn::ServiceClient client =
       getModuleHandle().serviceClient<SampleSrv>("sample_service");
 
       int i = 100;

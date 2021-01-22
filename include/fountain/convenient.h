@@ -3,7 +3,7 @@
 
 #include "main_thread.h"
 
-namespace mini_ros {
+namespace ftn {
 
 void init(int argc = 0, char** argv = nullptr);
 
@@ -29,6 +29,6 @@ struct argv
   char** operator()();
 };
 
-} /* mini_ros */
+} /* ftn */
 
 #endif

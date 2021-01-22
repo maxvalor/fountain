@@ -1,11 +1,11 @@
-#include <mini_ros/mini_ros.h>
+#include <fountain/fountain.h>
 #include "client_module.h"
 
 
 int main()
 {
-  mini_ros::init();
+  ftn::init();
   ClientModule cm;
-  mini_ros::hold(&cm);
+  ftn::hold(&cm);
   return 0;
 }

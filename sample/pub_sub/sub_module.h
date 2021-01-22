@@ -1,14 +1,14 @@
 #ifndef SUB_MODULE_H_
 #define SUB_MODULE_H_
 
-#include <mini_ros/module.h>
+#include <fountain/module.h>
 #include <iostream>
 #include <sys/time.h>
 #include "sample_msg.h"
 
-class SubModule : public mini_ros::Module {
+class SubModule : public ftn::Module {
 private:
-  mini_ros::Subscriber sub;
+  ftn::Subscriber sub;
 
 public:
   SubModule () {}
@@ -39,7 +39,7 @@ public:
       getModuleHandle().subscribe<SampleMsg>("sample_topic",
         std::bind(&SubModule::onMsg, this, std::placeholders::_1));
 
-    // mini_ros::Subscriber sub2 =
+    // ftn::Subscriber sub2 =
     //   getModuleHandle().subscribe<SampleMsg>("sample_topic",
     //     std::bind(&SubModule::onMsg, this, std::placeholders::_1));
   }

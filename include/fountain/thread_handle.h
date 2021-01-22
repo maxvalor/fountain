@@ -15,7 +15,7 @@
 #include "service_client.h"
 #include "service_server.h"
 
-namespace mini_ros {
+namespace ftn {
 
 class ThreadHandle {
 public:
@@ -92,6 +92,6 @@ private:
     std::uint32_t timeout_ms, const char* tname);
 };
 
-} /* mini_ros */
+} /* ftn */
 
 #endif

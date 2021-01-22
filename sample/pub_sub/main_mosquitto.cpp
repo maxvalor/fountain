@@ -1,11 +1,11 @@
-#include <mini_ros/mini_ros.h>
+#include <fountain/fountain.h>
 #include "sub_module.h"
 
 
 int main()
 {
-  mini_ros::init();
+  ftn::init();
   SubModule sm;
-  mini_ros::hold(&sm);
+  ftn::hold(&sm);
   return 0;
 }

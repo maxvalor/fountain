@@ -1,7 +1,7 @@
 #ifndef SERVICE_H_
 #define SERVICE_H_
 
-namespace mini_ros {
+namespace ftn {
 
   struct Service {
     struct Header {
@@ -13,7 +13,7 @@ namespace mini_ros {
 
     std::uint8_t __data[0];
   };
-} /* mini_ros */
+} /* ftn */
 
 
 #endif

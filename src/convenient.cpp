@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-namespace mini_ros {
+namespace ftn {
 
 int __argc = 0;
 char** __argv = nullptr;
@@ -76,4 +76,4 @@ void __hold(size_t count, ...)
   _exit(0);
 }
 
-} /* mini_ros */
+} /* ftn */

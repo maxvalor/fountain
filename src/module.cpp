@@ -1,6 +1,6 @@
 #include "module.h"
 
-namespace mini_ros {
+namespace ftn {
 
   Module::Module()
   {
@@ -48,4 +48,4 @@ namespace mini_ros {
     return *handle;
   }
 
-} /* mini_ros */
+} /* ftn */

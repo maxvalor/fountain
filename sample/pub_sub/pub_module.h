@@ -1,13 +1,13 @@
 #ifndef PUB_MODULE_H_
 #define PUB_MODULE_H_
 
-#include <mini_ros/module.h>
+#include <fountain/module.h>
 #include <iostream>
 #include <stdio.h>
 #include <sys/time.h>
 #include "sample_msg.h"
 
-class PubModule : public mini_ros::Module {
+class PubModule : public ftn::Module {
 private:
   bool running;
 
@@ -17,7 +17,7 @@ public:
 
   void onInit() override
   {
-    mini_ros::Publisher pub = getModuleHandle().advertise<SampleMsg>("sample_topic");
+    ftn::Publisher pub = getModuleHandle().advertise<SampleMsg>("sample_topic");
     int i = 1000000;
     running = true;
     while (running && --i)

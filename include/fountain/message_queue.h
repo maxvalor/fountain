@@ -5,7 +5,7 @@
 #include "service.h"
 #include "multithread_queue.h"
 
-namespace mini_ros {
+namespace ftn {
 
 using MessagePair = std::pair<std::string, std::shared_ptr<Message>>;
 

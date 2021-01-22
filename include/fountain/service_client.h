@@ -4,7 +4,7 @@
 #include "service.h"
 #include <memory.h>
 
-namespace mini_ros {
+namespace ftn {
 
 class ServiceClient {
 private:
@@ -28,6 +28,6 @@ public:
   }
 };
 
-} /* mini_ros */
+} /* ftn */
 
 #endif

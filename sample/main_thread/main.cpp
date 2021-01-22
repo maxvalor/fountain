@@ -1,11 +1,11 @@
-#include <mini_ros/mini_ros.h>
+#include <fountain/fountain.h>
 #include "ros_module.h"
 
 
 int main()
 {
-  mini_ros::init();
+  ftn::init();
   ROSModule rm;
-  mini_ros::hold(&rm);
+  ftn::hold(&rm);
   return 0;
 }

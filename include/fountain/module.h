@@ -4,7 +4,7 @@
 #include <thread>
 #include "module_handle.h"
 
-namespace mini_ros {
+namespace ftn {
 
 class Module {
 
@@ -29,6 +29,6 @@ public:
   virtual ~Module();
 };
 
-} /* mini_ros */
+} /* ftn */
 
 #endif

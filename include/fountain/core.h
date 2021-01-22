@@ -10,7 +10,7 @@
 #include <mosquitto.h>
 #include <mqtt_protocol.h>
 
-namespace mini_ros {
+namespace ftn {
 
 class Core {
 private:
@@ -52,5 +52,5 @@ public:
   bool wait_for_response(std::string srv_resp, std::shared_ptr<Service> srv);
 };
 
-} /* mini_ros */
+} /* ftn */
 #endif

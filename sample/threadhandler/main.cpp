@@ -1,4 +1,4 @@
-#include <mini_ros/mini_ros.h>
+#include <fountain/fountain.h>
 #include <iostream>
 #include "sample_msg.h"
 
@@ -9,11 +9,11 @@ void onMsg(std::shared_ptr<SampleMsg> msg)
 
 int main()
 {
-  mini_ros::init();
+  ftn::init();
   std::thread pub_t([]
   {
-    mini_ros::ThreadHandle th;
-    mini_ros::Publisher pub = th.advertise<SampleMsg>("sample_topic");
+    ftn::ThreadHandle th;
+    ftn::Publisher pub = th.advertise<SampleMsg>("sample_topic");
     int i = 10;
     while (--i)
     {
@@ -37,8 +37,8 @@ int main()
 
   std::thread sub_t([]
   {
-    mini_ros::ThreadHandle th;
-    mini_ros::Subscriber sub = th.subscribe<SampleMsg>("sample_topic", onMsg);
+    ftn::ThreadHandle th;
+    ftn::Subscriber sub = th.subscribe<SampleMsg>("sample_topic", onMsg);
     th.spin();
   });
 

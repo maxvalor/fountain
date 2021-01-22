@@ -1,9 +1,9 @@
 #ifndef SAMPLE_SRV_H_
 #define SAMPLE_SRV_H_
 
-#include <mini_ros/service.h>
+#include <fountain/service.h>
 
-struct SampleSrv : public mini_ros::Service
+struct SampleSrv : public ftn::Service
 {
   std::uint32_t req;
   std::uint32_t resp;

@@ -22,7 +22,7 @@ add_executable(sample_sc_s sample/srv_call/main_service.cpp)
 add_executable(sample_th sample/threadhandler/main.cpp)
 add_executable(sample_mt sample/main_thread/main.cpp)
 
-set(SAMPLE_DEPENDS miniros)
+set(SAMPLE_DEPENDS fountain)
 target_link_libraries(sample_sc ${SAMPLE_DEPENDS})
 target_link_libraries(sample_sc_c ${SAMPLE_DEPENDS})
 target_link_libraries(sample_sc_s ${SAMPLE_DEPENDS})

@@ -4,7 +4,7 @@
 #include <functional>
 #include "multithread_queue.h"
 
-namespace mini_ros {
+namespace ftn {
   class MainThreadEvent
   {
   public:
@@ -113,6 +113,6 @@ namespace mini_ros {
 
 
 
-} /* mini_ros */
+} /* ftn */
 
 #endif

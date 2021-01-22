@@ -3,7 +3,7 @@
 #include <string.h>
 #include <iostream>
 
-namespace mini_ros {
+namespace ftn {
 
   Core* Core::singleton = nullptr;
 
@@ -313,4 +313,4 @@ namespace mini_ros {
     }
     return found;
   }
-} /* mini_ros */
+} /* ftn */

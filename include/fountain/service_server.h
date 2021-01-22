@@ -3,7 +3,7 @@
 
 #include <functional>
 
-namespace mini_ros {
+namespace ftn {
 
 class ServiceServer {
 private:
@@ -22,6 +22,6 @@ public:
   }
 };
 
-} /* mini_ros */
+} /* ftn */
 
 #endif

@@ -3,7 +3,7 @@
 
 #include "thread_handle.h"
 
-namespace mini_ros {
+namespace ftn {
 
   class ModuleHandle : public ThreadHandle
   {
@@ -12,6 +12,6 @@ namespace mini_ros {
     ModuleHandle() {}
   };
 
-} /* mini_ros */
+} /* ftn */
 
 #endif
