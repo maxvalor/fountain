@@ -25,17 +25,19 @@ private:
   std::mutex subscribers_mtx;
   std::mutex services_mtx;
   struct mosquitto *mosq;
-  struct mosquitto *mosq_req;
-  struct mosquitto *mosq_resp;
+  struct mosquitto *mosq_srv;
 
   ServiceQueue srv_resp_queue;
   std::mutex srv_resp_mtx;
+  int retry;
 
   Core();
 public:
 
   static Core& instance();
   virtual ~Core ();
+
+  bool init(std::string host, int retry = 100);
 
   void register_handle(std::thread::id tid,
     std::function<void(MessagePair)> f);

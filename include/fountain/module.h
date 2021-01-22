@@ -2,6 +2,7 @@
 #define MODULE_H_
 
 #include <thread>
+#include <atomic>
 #include "module_handle.h"
 
 namespace ftn {
@@ -24,6 +25,7 @@ private:
   ModuleHandle* handle;
   std::condition_variable cv;
   std::mutex mtx;
+  std::atomic_bool stopped;
 public:
   Module();
   virtual ~Module();

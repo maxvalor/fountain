@@ -1,13 +1,15 @@
 #ifndef SERVICE_H_
 #define SERVICE_H_
 
+#include <sys/time.h>
+
 namespace ftn {
 
   struct Service {
     struct Header {
       pid_t pid;
       std::thread::id tid;
-      std::uint32_t timestamp;
+      struct timeval timestamp;
       size_t data_len;
     } header;
 

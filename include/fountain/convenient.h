@@ -5,7 +5,7 @@
 
 namespace ftn {
 
-void init(int argc = 0, char** argv = nullptr);
+void init(int argc = 0, char** argv = nullptr, std::string host = "127.0.0.1");
 
 
 void __hold(size_t count, ...);

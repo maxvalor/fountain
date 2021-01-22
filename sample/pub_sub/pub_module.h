@@ -20,7 +20,7 @@ public:
     ftn::Publisher pub = getModuleHandle().advertise<SampleMsg>("sample_topic");
     int i = 1000000;
     running = true;
-    ftn::Rate loop(1);
+    ftn::Rate loop(1000);
     while (running && --i)
     {
       SampleMsg msg;
@@ -45,7 +45,7 @@ public:
   void onStopped() override
   {
     running = false;
-    exit(0);
+    // exit(0);
   }
 
   void onExit() override

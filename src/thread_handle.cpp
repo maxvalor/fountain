@@ -39,6 +39,8 @@ namespace ftn {
       recv_msg_queue.notify();
     };
     Core::instance().register_handle(tid, emplace);
+
+    running = true;
   }
 
   ThreadHandle::~ThreadHandle () {}
@@ -46,7 +48,6 @@ namespace ftn {
   void ThreadHandle::spin()
   {
     assert(tid == std::this_thread::get_id());
-    running = true;
     while (running)
     {
       if (!recv_msg_queue.empty())

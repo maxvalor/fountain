@@ -1,23 +1,31 @@
 #include "module.h"
+#include <iostream>
 
 namespace ftn {
 
   Module::Module()
   {
+    stopped = false;
+
     _t = std::thread([this]()
     {
       handle = new ModuleHandle();
       onInit();
       handle->spin();
       onExit();
-      cv.notify_one();
+      while (!stopped)
+      {
+        cv.notify_all();
+        std::this_thread::yield();
+      }
     });
   }
 
   void Module::wait()
   {
-    std::unique_lock <std::mutex> lck(mtx);
+    std::unique_lock<std::mutex> lck(mtx);
     cv.wait(lck);
+    stopped = true;
   }
 
   void Module::sleep(uint32_t ms)

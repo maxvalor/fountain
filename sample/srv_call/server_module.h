@@ -30,7 +30,7 @@ public:
 
   void onStopped() override
   {
-    exit(0);
+    std::cout << "server exit." << std::endl;
   }
 };
 

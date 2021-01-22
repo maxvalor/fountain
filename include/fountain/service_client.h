@@ -20,6 +20,7 @@ public:
   template <typename T>
   bool call(std::shared_ptr<T> srv, size_t data_len = sizeof(T)) {
     if (f != nullptr ) {
+      gettimeofday(&(srv->header.timestamp), NULL);
       srv->header.data_len = data_len;
       return f(srv, typeid(T).name());
     }

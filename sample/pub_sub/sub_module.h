@@ -47,7 +47,6 @@ public:
   void onExit() override
   {
     std::cout << "subscriber exit." << std::endl;
-    exit(0);
   }
 };
 

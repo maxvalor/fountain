@@ -46,9 +46,9 @@ public:
     return msg_queue.size() == 0;
   }
 
-  void wait() {
+  void wait(std::uint64_t ms = 10) {
     std::unique_lock <std::mutex> lck(mtx_cv);
-    cv.wait_for(lck, std::chrono::milliseconds(10));
+    cv.wait_for(lck, std::chrono::milliseconds(ms));
   }
 
   void notify() {

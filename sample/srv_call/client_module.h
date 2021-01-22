@@ -7,7 +7,7 @@
 
 class ClientModule : public ftn::Module {
 private:
-  /* data */
+  bool running;
 
 public:
   ClientModule () {}
@@ -15,12 +15,14 @@ public:
 
   void onInit() override
   {
+    running = true;
+
     ftn::ServiceClient client =
       getModuleHandle().serviceClient<SampleSrv>("sample_service");
 
     int i = 100;
     ftn::Rate loop(1);
-    while (--i)
+    while (--i && running)
     {
       auto pSrv = std::make_shared<SampleSrv>();
       pSrv->req= i;
@@ -39,7 +41,8 @@ public:
   
   void onStopped() override
   {
-    exit(0);
+    running = false;
+    std::cout << "client exit." << std::endl;
   }
 };
 

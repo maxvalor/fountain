@@ -7,6 +7,7 @@
 #include <chrono>
 #include <list>
 #include <string.h>
+#include <atomic>
 #include "message_queue.h"
 #include "core.h"
 #include "subscriber.h"

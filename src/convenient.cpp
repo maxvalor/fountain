@@ -27,11 +27,11 @@ void stop(int signo)
   MainThreadProcessor::instance().stop();
 }
 
-void init(int argc, char** argv)
+void init(int argc, char** argv, std::string host)
 {
   __argc = argc;
   __argv = argv;
-  Core::instance();
+  Core::instance().init(host);
   MainThreadProcessor::instance();
   signal(SIGINT, stop);
 }
@@ -56,7 +56,6 @@ void __hold(size_t count, ...)
 
   for (size_t i = 0; i < count; ++i)
   {
-    std::cout << count << std::endl;
     Module *pModule = va_arg(ap, Module*);
     pModule->stop();
     std::future<void> result = std::async([pModule](){
@@ -65,7 +64,7 @@ void __hold(size_t count, ...)
     try
     {
       std::chrono::system_clock::time_point two_seconds_passed
-          = std::chrono::system_clock::now() + std::chrono::milliseconds(10);
+          = std::chrono::system_clock::now() + std::chrono::milliseconds(100);
       result.wait_until(two_seconds_passed);
     }
     catch (...) {}
