@@ -18,22 +18,23 @@ public:
     ftn::ServiceClient client =
       getModuleHandle().serviceClient<SampleSrv>("sample_service");
 
-      int i = 100;
-      while (--i)
+    int i = 100;
+    ftn::Rate loop(1);
+    while (--i)
+    {
+      auto pSrv = std::make_shared<SampleSrv>();
+      pSrv->req= i;
+      if (client.call(pSrv))
       {
-        auto pSrv = std::make_shared<SampleSrv>();
-        pSrv->req= i;
-        if (client.call(pSrv))
-        {
-          std::cout << "call service by shared pointer, service return:" << pSrv->resp<< std::endl;
-        }
-        else
-        {
-          std::cout << "error " << std::endl;
-        }
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::cout << "call service by shared pointer, service return:" << pSrv->resp<< std::endl;
       }
+      else
+      {
+        std::cout << "error " << std::endl;
+      }
+
+      loop.sleep();
+    }
   }
   
   void onStopped() override

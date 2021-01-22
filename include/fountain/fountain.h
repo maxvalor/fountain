@@ -4,5 +4,6 @@
 #include "module_handle.h"
 #include "module.h"
 #include "convenient.h"
+#include "rate.h"
 
 #endif

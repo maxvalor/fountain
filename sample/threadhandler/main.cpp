@@ -15,6 +15,7 @@ int main()
     ftn::ThreadHandle th;
     ftn::Publisher pub = th.advertise<SampleMsg>("sample_topic");
     int i = 10;
+    ftn::Rate loop(100);
     while (--i)
     {
       SampleMsg msg;
@@ -31,7 +32,7 @@ int main()
       std::cout << "publish by shared pointer, data:" << spMsg->data[0] << std::endl;
       pub.publish(spMsg);
 
-      std::this_thread::sleep_for(std::chrono::milliseconds(10));
+      loop.sleep();
     }
   });
 

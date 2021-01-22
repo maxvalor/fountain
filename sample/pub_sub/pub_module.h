@@ -20,6 +20,7 @@ public:
     ftn::Publisher pub = getModuleHandle().advertise<SampleMsg>("sample_topic");
     int i = 1000000;
     running = true;
+    ftn::Rate loop(1);
     while (running && --i)
     {
       SampleMsg msg;
@@ -37,7 +38,7 @@ public:
       // std::cout << "publish by shared pointer, data:" << spMsg->data[0] << std::endl;
       // pub.publish(spMsg);
 
-      std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+      loop.sleep();
     }
   }
 
